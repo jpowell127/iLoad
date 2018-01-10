@@ -1,0 +1,14 @@
+#fileInput {
+  display: none;
+}
+
+#fileList.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#fileDrop {
+  width: 200px;
+  height: 200px;
+  border: 1px dashed #333;
+}

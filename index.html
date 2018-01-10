@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>iLoad</title>
+</head>
+
+<body>
+  <h1>iLoad</h1>
+  <input type="file" id="fileInput" multiple accept="*">
+  <a href="#" id="fileSelect">Load Some Files</a>
+  <a href="#" id="toggleView">Toggle View</a>
+  <div id="fileList" class="grid">
+    <p>No files loaded!</p>
+  </div>
+  <div id="fileTotal"></div>
+  <div id="fileDrop"></div>
+  <script src="./fileLoader.js"></script>
+</body>
+
+</html>
