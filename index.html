@@ -4,21 +4,37 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+    crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>iLoad</title>
 </head>
 
 <body>
-  <h1>iLoad</h1>
-  <input type="file" id="fileInput" multiple accept="*">
-  <a href="#" id="fileSelect">Load Some Files</a>
-  <a href="#" id="toggleView">Toggle View</a>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <i class="fa fa-arrow-circle-up" aria-hidden="true"></i> iLoad</a>
+    <input type="file" id="fileInput" multiple accept="*">
+    <button type="button" id="fileSelect" class="btn btn-outline-success ml-auto m-1">
+      Load Files
+      <i class="fa fa-upload" aria-hidden="true"></i>
+    </button>
+  </nav>
+  <div id="fileDrop" class="sticky-top">
+    <p class="text-center mt-4">Drag & Drop Files Here</p>
+  </div>
+  <span class="badge badge-info m-1 p-1">
+    Total File Sizes:
+    <span id="fileTotal">0 bytes</span>
+  </span>
+  <a href="#" id="toggleView" class="badge badge-secondary m-1 p-1 float-right">Toggle View
+    <i class="fa fa-toggle-on" aria-hidden="true"></i>
+  </a>
   <div id="fileList" class="grid">
     <p>No files loaded!</p>
   </div>
-  <div id="fileTotal"></div>
-  <div id="fileDrop"></div>
   <script src="./fileLoader.js"></script>
 </body>
 

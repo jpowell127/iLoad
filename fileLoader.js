@@ -68,11 +68,18 @@
     addFilesToStore(files);
   }
 
+  function createFileCard() {
+    var div = document.createElement("div");
+    div.className = "card m-3 p-3";
+    return div;
+  }
+
   function createFileThumbnail(file) {
     var img = document.createElement("img");
     img.src = window.URL.createObjectURL(file);
     img.height = 50;
     img.width = 50;
+    img.className = "rounded";
     img.onload = function() {
       window.URL.revokeObjectURL(this.src);
     };
@@ -80,15 +87,17 @@
   }
 
   function createFileInfo(file) {
-    var info = document.createElement("p");
-    info.innerHTML =
-      "Name: " +
-      file.name +
-      "Type: " +
-      file.type +
-      "Size: " +
-      file.size +
-      " bytes";
+    var info = document.createElement("div");
+    info.className = "card-body";
+    var name = document.createElement("p");
+    name.innerHTML = "Name: " + file.name;
+    var type = document.createElement("p");
+    type.innerHTML = "Type: " + file.type;
+    var size = document.createElement("p");
+    size.innerHTML = "Type: " + file.size + " bytes";
+    info.appendChild(name);
+    info.appendChild(type);
+    info.appendChild(size);
     return info;
   }
 
@@ -97,6 +106,7 @@
     var linkText = document.createTextNode("Delete");
     a.appendChild(linkText);
     a.id = index;
+    a.className = "btn btn-danger btn-sm";
     a.title = "Delete This";
     a.href = "#";
     a.onclick = removeFileFromStore;
@@ -104,15 +114,16 @@
   }
 
   function renderView() {
+    var totalFilesSize = 0;
     if (!storedFiles.length) {
       fileList.innerHTML = "<p>No files loaded!</p>";
+      fileTotal.innerHTML = totalFilesSize + " bytes";
     } else {
       fileList.innerHTML = "";
-      var totalFilesSize = 0;
       for (var i = 0; i < storedFiles.length; i++) {
         // calculate total size of all files
         totalFilesSize += storedFiles[i].size;
-        var div = document.createElement("div");
+        var div = createFileCard();
         fileList.appendChild(div);
         // if file is an image, create a thumbnail preview
         if (storedFiles[i].type.split("/")[0] == "image") {
@@ -124,7 +135,7 @@
         var a = createFileDeleteLink(i);
         div.appendChild(a);
       }
-      fileTotal.innerHTML = "Total File Sizes: " + totalFilesSize + " bytes";
+      fileTotal.innerHTML = totalFilesSize + " bytes";
     }
   }
 })();
